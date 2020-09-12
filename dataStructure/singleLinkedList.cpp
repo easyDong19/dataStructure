@@ -15,6 +15,7 @@ void InsertNode(NODE *);
 
 void Initialize(void)
 {
+	/
 	NODE *ptr;
 	head = (NODE *)malloc(sizeof(NODE));
 	end = (NODE *)malloc(sizeof(NODE));
@@ -85,6 +86,6 @@ int main()
 		ptr = ptr->Next;
 	}
 
-	//깃허브 연결 테스트용
-	printf("hello git?");
+	//깃허브 테스트
+	printf("hello github?");
 }
