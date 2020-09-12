@@ -12,10 +12,10 @@ NODE *temp1, *temp2, *temp3, *temp4;
 
 void Initialize(void);
 void InsertNode(NODE *);
+void DeleteNode(NODE *);
 
 void Initialize(void)
 {
-	/
 	NODE *ptr;
 	head = (NODE *)malloc(sizeof(NODE));
 	end = (NODE *)malloc(sizeof(NODE));
@@ -56,6 +56,23 @@ void InsertNode(NODE *ptr)
 	ptr->Next = indexptr->Next;
 	indexptr->Next = ptr;
 }
+
+void DeleteNode(NODE *ptr)
+{
+	NODE *indexptr = head;
+	NODE *deleteptr = indexptr;
+
+	for (indexptr = head; indexptr != end; indexptr = indexptr->Next) {
+		if (indexptr->Next->Data == ptr->Data) {
+			deleteptr = indexptr->Next;
+			break;
+		}
+	}
+
+	indexptr->Next = indexptr->Next->Next;
+	free(deleteptr);
+}
+
 int main()
 {
 	NODE *ptr;
@@ -65,6 +82,7 @@ int main()
 	//링크드 리스트의 노드에 저장한 데이터 출력
 	ptr = head->Next;
 
+	printf("노드 C의 삽입전\n");
 	for (i = 0; i < 4; i++) {
 		printf("%2c", ptr->Data);
 		ptr = ptr->Next;
@@ -77,6 +95,7 @@ int main()
 
 	//새로 생성한 노드 삽입
 	InsertNode(temp);
+	printf("노드 C의 삽입후\n");
 
 	//링크드 리스트의 노드에 저장한 데이터 출력
 	ptr = head->Next;
@@ -86,6 +105,16 @@ int main()
 		ptr = ptr->Next;
 	}
 
-	//깃허브 테스트
-	printf("hello github?");
+	//노드의 삭제
+	DeleteNode(temp);
+
+	//링크드 리스트의 노드에 저장된 데이터 출력
+	printf("\n노드 C의 삭제 후\n");
+	ptr = head->Next;
+
+	for (i = 0; i < 4; i++) {
+		printf("%2c", ptr->Data);
+		ptr = ptr->Next;
+	}
+
 }
