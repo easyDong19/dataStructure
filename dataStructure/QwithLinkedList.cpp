@@ -72,7 +72,7 @@ void DisplayQueue(void)
 	else if (Front->Next == Rear) printf("Queue Empty \n");
 }
 
-void main()
+int main()
 {
 	int ret;
 	InitializeQueue();
